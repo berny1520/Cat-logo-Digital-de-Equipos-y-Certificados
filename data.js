@@ -1,6 +1,6 @@
 const EQUIPOS = [
   {
-    "id": "EQ-001",
+    "id": "XTM-JUMBO-187",
     "equipo": "JUMBO J-187",
     "estado": "Operativo",
     "observacion": "",
@@ -13,7 +13,7 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-002",
+    "id": "XTM-JUMBO-133",
     "equipo": "JUMBO S1D J-133",
     "estado": "Operativo",
     "observacion": "Flexible de retorno avance",
@@ -26,7 +26,7 @@ const EQUIPOS = [
     "certificado": "certificados/Fops Rops S1D-DH 8999795900.pdf"
   },
   {
-    "id": "EQ-003",
+    "id": "XTM-JUMBO-587",
     "equipo": "JUMBO DD311D J-587",
     "estado": "Operativo",
     "observacion": "",
@@ -39,7 +39,7 @@ const EQUIPOS = [
     "certificado": "certificados/Certificados DD311D L22D7587 Cabina.pdf"
   },
   {
-    "id": "EQ-004",
+    "id": "XTM-JUMBO-163",
     "equipo": "JUMBO S7D J-163",
     "estado": "Operativo",
     "observacion": "",
@@ -52,20 +52,7 @@ const EQUIPOS = [
     "certificado": "certificados/Fops Rops S7D 8999797800.pdf"
   },
   {
-    "id": "EQ-005",
-    "equipo": "BOLTEC",
-    "estado": "Operativo",
-    "observacion": "",
-    "marca": "",
-    "modelo": "",
-    "serie": "",
-    "rig": "",
-    "fecha": "",
-    "tipo": "",
-    "certificado": ""
-  },
-  {
-    "id": "EQ-006",
+    "id": "XTM-JUMBO-381",
     "equipo": "Jumbo Boltec J-381",
     "estado": "F/S",
     "observacion": "",
@@ -78,7 +65,7 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-007",
+    "id": "XTM-MANI-474",
     "equipo": "MANIPULADOR MAT-474",
     "estado": "Operativo",
     "observacion": "",
@@ -91,7 +78,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3465474.pdf"
   },
   {
-    "id": "EQ-008",
+    "id": "XTM-MANI-336",
     "equipo": "MANIPULADOR MAT-336",
     "estado": "Operativo",
     "observacion": "",
@@ -104,7 +91,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3465336.pdf"
   },
   {
-    "id": "EQ-009",
+    "id": "XTM-MANI-319",
     "equipo": "MANIPULADOR MAT-319",
     "estado": "Operativo",
     "observacion": "",
@@ -117,7 +104,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3465319.pdf"
   },
   {
-    "id": "EQ-010",
+    "id": "XTM-MANI-047",
     "equipo": "MANIPULADOR MAT-047",
     "estado": "Operativo",
     "observacion": "",
@@ -130,7 +117,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3465047.pdf"
   },
   {
-    "id": "EQ-011",
+    "id": "XTM-MANI-869",
     "equipo": "MANIPULADOR MAT-869",
     "estado": "F/S",
     "observacion": "",
@@ -143,7 +130,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3464869.pdf"
   },
   {
-    "id": "EQ-012",
+    "id": "XTM-MANI-933",
     "equipo": "MANIPULADOR MAT-933",
     "estado": "Operativo",
     "observacion": "",
@@ -156,7 +143,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3464933.pdf"
   },
   {
-    "id": "EQ-013",
+    "id": "XTM-MANI-160",
     "equipo": "MANIPULADOR MAT-160",
     "estado": "Operativo",
     "observacion": "",
@@ -169,7 +156,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3465160.pdf"
   },
   {
-    "id": "EQ-014",
+    "id": "XTM-MANI-747",
     "equipo": "MANIPULADOR MAT-747",
     "estado": "Operativo",
     "observacion": "",
@@ -182,7 +169,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3466747.pdf"
   },
   {
-    "id": "EQ-015",
+    "id": "XTM-MANI-512",
     "equipo": "MANIPULADOR MAT-512",
     "estado": "Operativo",
     "observacion": "",
@@ -195,7 +182,7 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-016",
+    "id": "XTM-MANI-757",
     "equipo": "MANIPULADOR MAT-757",
     "estado": "Operativo",
     "observacion": "",
@@ -208,7 +195,7 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-017",
+    "id": "XTM-MANI-891",
     "equipo": "MANIPULADOR MAT-891",
     "estado": "Operativo",
     "observacion": "",
@@ -221,7 +208,7 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-018",
+    "id": "XTM-MANI-660",
     "equipo": "MANIPULADOR MAT-660",
     "estado": "F/S",
     "observacion": "",
@@ -234,7 +221,7 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-019",
+    "id": "XTM-RETRO-264",
     "equipo": "RETROEXCAVADORA 264",
     "estado": "Operativo",
     "observacion": "F/S tarjeta verde",
@@ -247,7 +234,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3326264.pdf"
   },
   {
-    "id": "EQ-020",
+    "id": "XTM-RETRO-385",
     "equipo": "RETROEXCAVADORA 385",
     "estado": "Operativo",
     "observacion": "",
@@ -260,7 +247,7 @@ const EQUIPOS = [
     "certificado": "certificados/Ergonomia 3439385.pdf"
   },
   {
-    "id": "EQ-021",
+    "id": "XTM-ROBOSHOT-231",
     "equipo": "ROBOSHOT 231",
     "estado": "Operativo",
     "observacion": "",
@@ -273,7 +260,7 @@ const EQUIPOS = [
     "certificado": "certificados/1 CERTIFICADO CABINA EQA0231.pdf"
   },
   {
-    "id": "EQ-022",
+    "id": "XTM-ROBOSHOT-048",
     "equipo": "ROBOSHOT 048",
     "estado": "Operativo",
     "observacion": "",
@@ -286,7 +273,7 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-023",
+    "id": "XTM-LHD-033",
     "equipo": "LHD 033",
     "estado": "Operativo",
     "observacion": "",
@@ -299,7 +286,7 @@ const EQUIPOS = [
     "certificado": "certificados/Certificado FOPS- ROPS.pdf"
   },
   {
-    "id": "EQ-024",
+    "id": "XTM-LHD-043",
     "equipo": "LHD 043",
     "estado": "Operativo",
     "observacion": "",
@@ -312,7 +299,7 @@ const EQUIPOS = [
     "certificado": "certificados/ROPS FOPS Test Certificate ST1030 LHD043.pdf"
   },
   {
-    "id": "EQ-025",
+    "id": "XTM-ACUÑADOR-427",
     "equipo": "ACUÑADOR 427",
     "estado": "Operativo",
     "observacion": "",
@@ -323,97 +310,6 @@ const EQUIPOS = [
     "fecha": "05-02-2025",
     "tipo": "Inspección FOPS/ROPS Bureau Veritas",
     "certificado": "certificados/6. JMC-1427 CERTIFICADA FOPS ROPS.pdf"
-  },
-  {
-    "id": "EQ-026",
-    "equipo": "COMPRESOR K95",
-    "estado": "Operativo",
-    "observacion": "",
-    "marca": "",
-    "modelo": "",
-    "serie": "",
-    "rig": "",
-    "fecha": "",
-    "tipo": "",
-    "certificado": ""
-  },
-  {
-    "id": "EQ-027",
-    "equipo": "COMPRESOR 404",
-    "estado": "Operativo",
-    "observacion": "",
-    "marca": "",
-    "modelo": "",
-    "serie": "",
-    "rig": "",
-    "fecha": "",
-    "tipo": "",
-    "certificado": ""
-  },
-  {
-    "id": "EQ-028",
-    "equipo": "COMPRESOR",
-    "estado": "Operativo",
-    "observacion": "",
-    "marca": "",
-    "modelo": "",
-    "serie": "",
-    "rig": "",
-    "fecha": "",
-    "tipo": "",
-    "certificado": ""
-  },
-  {
-    "id": "EQ-029",
-    "equipo": "B. HORMIGON 978",
-    "estado": "Operativo",
-    "observacion": "",
-    "marca": "",
-    "modelo": "",
-    "serie": "",
-    "rig": "",
-    "fecha": "",
-    "tipo": "",
-    "certificado": ""
-  },
-  {
-    "id": "EQ-030",
-    "equipo": "GENERADOR 009",
-    "estado": "Operativo",
-    "observacion": "",
-    "marca": "",
-    "modelo": "",
-    "serie": "",
-    "rig": "",
-    "fecha": "",
-    "tipo": "",
-    "certificado": ""
-  },
-  {
-    "id": "EQ-031",
-    "equipo": "GENERADOR 011",
-    "estado": "Operativo",
-    "observacion": "",
-    "marca": "",
-    "modelo": "",
-    "serie": "",
-    "rig": "",
-    "fecha": "",
-    "tipo": "",
-    "certificado": ""
-  },
-  {
-    "id": "EQ-032",
-    "equipo": "GENERADOR 012",
-    "estado": "Operativo",
-    "observacion": "",
-    "marca": "",
-    "modelo": "",
-    "serie": "",
-    "rig": "",
-    "fecha": "",
-    "tipo": "",
-    "certificado": ""
   },
   {
     "id": "EQ-033",
@@ -429,8 +325,8 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-034",
-    "equipo": "MIXER 01",
+    "id": "XTM-MIX-132",
+    "equipo": "MIXER 132",
     "estado": "Operativo",
     "observacion": "",
     "marca": "",
@@ -442,8 +338,8 @@ const EQUIPOS = [
     "certificado": ""
   },
   {
-    "id": "EQ-035",
-    "equipo": "MIXER 02",
+    "id": "XTM-MIX-152",
+    "equipo": "MIXER 152",
     "estado": "Operativo",
     "observacion": "",
     "marca": "",
