@@ -1,0 +1,11 @@
+
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validación Equipo XTREME MINING</title><link rel="stylesheet" href="styles.css"></head>
+<body><header class="header"><div class="brand"><div class="logo">XM</div><div><h1>Validación de equipo / certificado</h1><p class="subtitle">Consulta local por código QR</p></div></div></header>
+<main class="wrap"><section class="panel"><div class="panel-head"><h2 id="title">Validación</h2><a class="btn light" href="index.html">Volver al dashboard</a></div><div id="result" style="padding:20px"></div></section></main>
+<script src="data.js"></script><script>
+const id=new URLSearchParams(location.search).get("id");const e=EQUIPOS.find(x=>x["ID Equipo"]===id);const r=document.getElementById("result");
+if(!e){r.innerHTML='<p>No se encontró el equipo indicado.</p>'} else {
+document.getElementById("title").textContent=e["ID Equipo"]+" - "+e["Equipo"];
+r.innerHTML=`<div class="card"><h3>${e["Equipo"]}</h3><p class="meta"><b>Estado:</b> ${e["Estado"]}<br><b>Familia:</b> ${e["Familia"]}<br><b>Marca/Modelo:</b> ${(e["Marca"]||"-")} / ${(e["Modelo"]||"-")}<br><b>Serie/VIN:</b> ${(e["Serie/VIN"]||"-")}<br><b>Certificado:</b> ${e["Tipo Certificado"]}<br><b>Emisión:</b> ${e["Emisión"]||"-"}<br><b>Vencimiento:</b> ${e["Vencimiento"]||"-"}</p>${e["URL Local"]?`<a class="btn red" href="${e["URL Local"]}" target="_blank">Abrir PDF certificado</a>`:'<span class="badge pend">Certificado pendiente de carga</span>'}<br><br><img class="qr" src="${e["QR"]}"></div>`;
+}
+</script></body></html>

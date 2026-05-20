@@ -1,13 +1,85 @@
+
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Catálogo de Equipos y Certificados</title>
-<style>
-:root{--bg:#0b1220;--card:#111a2e;--muted:#97a3b6;--txt:#edf3ff;--a:#12b981;--b:#2563eb;--warn:#f59e0b;--bad:#ef4444;--line:#243047}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#071021,#13223d 55%,#071021);font-family:Segoe UI,Roboto,Arial,sans-serif;color:var(--txt)}header{padding:28px 24px;border-bottom:1px solid var(--line);background:rgba(8,13,27,.82);position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}h1{margin:0;font-size:28px}header p{margin:8px 0 0;color:var(--muted)}.wrap{max-width:1280px;margin:auto;padding:20px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}.kpi,.panel,.card{background:rgba(17,26,46,.88);border:1px solid var(--line);border-radius:18px;box-shadow:0 16px 40px rgba(0,0,0,.25)}.kpi{padding:16px}.kpi b{font-size:30px;display:block}.kpi span{color:var(--muted);font-size:13px}.toolbar{display:grid;grid-template-columns:1.7fr 1fr 1fr auto;gap:10px;margin:14px 0 20px}.toolbar input,.toolbar select{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#0c1527;color:var(--txt)}button,.btn{border:0;border-radius:14px;padding:11px 14px;background:var(--b);color:white;text-decoration:none;cursor:pointer;font-weight:700;display:inline-flex;gap:8px;align-items:center;justify-content:center}.btn.ok{background:var(--a)}.btn.gray{background:#334155}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}.card{padding:16px;position:relative;overflow:hidden}.card:before{content:"";position:absolute;right:-40px;top:-40px;width:120px;height:120px;background:rgba(37,99,235,.18);border-radius:50%}.tag{display:inline-flex;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}.op{background:rgba(18,185,129,.16);color:#7ff0c8}.fs{background:rgba(239,68,68,.15);color:#ffb4b4}.nocert{background:rgba(245,158,11,.15);color:#ffd38a}.cert{background:rgba(37,99,235,.18);color:#bcd3ff}.title{font-size:20px;font-weight:800;margin:14px 0 4px}.meta{color:var(--muted);font-size:14px;line-height:1.55}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.74);z-index:20;padding:18px}.modal.show{display:block}.modalbox{height:94vh;max-width:1100px;margin:auto;background:#0b1220;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}.modalhead{padding:12px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line)}iframe{width:100%;height:100%;border:0;background:white}.empty{text-align:center;color:var(--muted);padding:35px}.printOnly{display:none}@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr}.wrap{padding:12px}h1{font-size:22px}}@media print{header,.toolbar,.actions{display:none}.card{break-inside:avoid}.grid{display:block}.card{margin-bottom:12px}.printOnly{display:block}}
-</style></head><body><header><div class="wrap"><h1>Catálogo Digital de Equipos y Certificados</h1><p>Control visual de equipos, estado operacional y certificados asociados FOPS / ROPS / Ergonomía.</p></div></header><main class="wrap"><section class="kpis"><div class="kpi"><b id="kTotal">0</b><span>Total equipos</span></div><div class="kpi"><b id="kOp">0</b><span>Operativos</span></div><div class="kpi"><b id="kCert">0</b><span>Con certificado cargado</span></div><div class="kpi"><b id="kPend">0</b><span>Pendientes sin certificado</span></div></section><section class="toolbar"><input id="q" placeholder="Buscar por equipo, modelo, serie, certificado..."><select id="estado"><option value="">Todos los estados</option><option>Operativo</option><option>F/S</option></select><select id="cert"><option value="">Todos</option><option value="si">Con certificado</option><option value="no">Sin certificado</option></select><button onclick="window.print()">Imprimir / PDF</button></section><section class="grid" id="grid"></section></main><div class="modal" id="modal"><div class="modalbox"><div class="modalhead"><strong id="modalTitle">Certificado</strong><div><a id="download" class="btn ok" target="_blank">Abrir PDF</a> <button class="btn gray" onclick="closeModal()">Cerrar</button></div></div><iframe id="viewer"></iframe></div></div><script src="data.js"></script><script>
-const grid=document.getElementById('grid');const q=document.getElementById('q'), estado=document.getElementById('estado'), cert=document.getElementById('cert');
-function render(){const text=q.value.toLowerCase();let list=EQUIPOS.filter(e=>{const blob=Object.values(e).join(' ').toLowerCase();return (!text||blob.includes(text))&&(!estado.value||e.estado===estado.value)&&(!cert.value||(cert.value==='si'?e.certificado:e.certificado===''));});
-document.getElementById('kTotal').textContent=EQUIPOS.length;document.getElementById('kOp').textContent=EQUIPOS.filter(e=>e.estado==='Operativo').length;document.getElementById('kCert').textContent=EQUIPOS.filter(e=>e.certificado).length;document.getElementById('kPend').textContent=EQUIPOS.filter(e=>!e.certificado).length;
-grid.innerHTML=list.length?list.map(e=>`<article class="card"><span class="tag ${e.estado==='Operativo'?'op':'fs'}">${e.estado}</span> <span class="tag ${e.certificado?'cert':'nocert'}">${e.certificado?'Certificado cargado':'Sin certificado'}</span><div class="title">${e.equipo}</div><div class="meta"><b>ID:</b> ${e.id}<br><b>Marca / Modelo:</b> ${e.marca||'Pendiente'} ${e.modelo||''}<br><b>Serie / Rig:</b> ${e.serie||'Pendiente'} ${e.rig?'/ '+e.rig:''}<br><b>Fecha cert.:</b> ${e.fecha||'Pendiente'}<br><b>Tipo:</b> ${e.tipo||'Pendiente'}${e.observacion?'<br><b>Obs.:</b> '+e.observacion:''}</div><div class="actions">${e.certificado?`<button class="btn ok" onclick='openCert(${JSON.stringify(e.certificado)},${JSON.stringify(e.equipo)})'>Ver certificado</button><a class="btn" href="validar.html?id=${encodeURIComponent(e.id)}" target="_blank">Validar</a>`:`<button class="btn gray" disabled>Certificado pendiente</button>`}</div></article>`).join(''):'<div class="empty panel">No se encontraron equipos con ese filtro.</div>';}
-function openCert(url,title){document.getElementById('modal').classList.add('show');document.getElementById('viewer').src=url;document.getElementById('download').href=url;document.getElementById('modalTitle').textContent=title+' · Certificado';}
-function closeModal(){document.getElementById('modal').classList.remove('show');document.getElementById('viewer').src='';}
-[q,estado,cert].forEach(x=>x.addEventListener('input',render));render();
-</script></body></html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>XTREME MINING | Equipos y Certificados</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="brand">
+    <div class="logo">XM</div>
+    <div>
+      <h1>Control PRO de Equipos y Certificados</h1>
+      <p class="subtitle">Dashboard de trazabilidad documental - FOPS / ROPS / Cabina / Ergonomía / Operación</p>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="kpis">
+    <div class="kpi"><div class="t">Total equipos</div><div class="n" id="kTotal">0</div></div>
+    <div class="kpi"><div class="t">Con certificado</div><div class="n" id="kCert">0</div></div>
+    <div class="kpi"><div class="t">Pendientes</div><div class="n" id="kPend">0</div></div>
+    <div class="kpi"><div class="t">% cobertura</div><div class="n" id="kCob">0%</div></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Catálogo de equipos</h2>
+      <div class="filters">
+        <input id="q" placeholder="Buscar equipo, serie, modelo...">
+        <select id="familia"><option value="">Todas las familias</option></select>
+        <select id="estado"><option value="">Todos los estados</option><option>Vigente</option><option>Pendiente</option></select>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Equipo</th><th>Familia</th><th>Marca/Modelo</th><th>Serie/VIN</th><th>Certificado</th><th>Estado</th><th>Acción</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><h2>Vista gerencial por familia</h2><button class="btn light" onclick="window.print()">Imprimir / PDF</button></div>
+    <div class="cards" id="cards"></div>
+  </section>
+</main>
+<div class="footer">XTREME MINING - Sistema local listo para GitHub / Google Sheets. Versión PRO.</div>
+<script src="data.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const families=[...new Set(EQUIPOS.map(e=>e["Familia"]))].sort();
+families.forEach(f=>{const o=document.createElement("option");o.textContent=f;o.value=f;$("#familia").appendChild(o)});
+function badge(e){return e==="Vigente" ? '<span class="badge ok">Vigente</span>' : '<span class="badge pend">Pendiente</span>'}
+function action(e){
+ const url=e["URL Local"];
+ const qr=e["QR"];
+ let buttons = url ? `<a class="btn red" href="${url}" target="_blank">Ver certificado</a>` : `<span class="badge pend">Sin PDF</span>`;
+ return `${buttons}<br><img class="qr" src="${qr}" alt="QR ${e["ID Equipo"]}"><br><a class="btn gray" href="validar.html?id=${e["ID Equipo"]}" target="_blank">Validar QR</a>`;
+}
+function filterData(){
+ const q=$("#q").value.toLowerCase().trim();
+ const fam=$("#familia").value; const est=$("#estado").value;
+ return EQUIPOS.filter(e=>(!fam||e["Familia"]===fam)&&(!est||e["Estado"]===est)&&(!q||JSON.stringify(e).toLowerCase().includes(q)));
+}
+function render(){
+ const data=filterData();
+ $("#tbody").innerHTML=data.map(e=>`<tr>
+ <td><b>${e["ID Equipo"]}</b></td><td>${e["Equipo"]}</td><td>${e["Familia"]}</td>
+ <td>${e["Marca"]||"-"}<br><small>${e["Modelo"]||""}</small></td><td>${e["Serie/VIN"]||"-"}<br><small>${e["Rig/Patente"]||""}</small></td>
+ <td>${e["Tipo Certificado"]}<br><small>Emisión: ${e["Emisión"]||"-"} | Vence: ${e["Vencimiento"]||"-"}</small></td><td>${badge(e["Estado"])}</td><td>${action(e)}</td></tr>`).join("");
+ const total=EQUIPOS.length, cert=EQUIPOS.filter(e=>e["Archivo Certificado"]).length, pend=total-cert;
+ $("#kTotal").textContent=total; $("#kCert").textContent=cert; $("#kPend").textContent=pend; $("#kCob").textContent=Math.round(cert/total*100)+"%";
+ renderCards();
+}
+function renderCards(){
+ const by={}; EQUIPOS.forEach(e=>{by[e["Familia"]] ||= {t:0,c:0,p:0}; by[e["Familia"]].t++; if(e["Archivo Certificado"]) by[e["Familia"]].c++; else by[e["Familia"]].p++;});
+ $("#cards").innerHTML=Object.entries(by).map(([f,v])=>`<div class="card"><h3>${f}</h3><div class="meta">Total: <b>${v.t}</b><br>Certificados: <b>${v.c}</b><br>Pendientes: <b>${v.p}</b><br>Cobertura: <b>${Math.round(v.c/v.t*100)}%</b></div></div>`).join("");
+}
+["q","familia","estado"].forEach(id=>$("#"+id).addEventListener("input",render));
+render();
+</script>
+</body></html>
